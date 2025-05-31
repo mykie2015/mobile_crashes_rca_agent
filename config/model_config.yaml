@@ -1,0 +1,31 @@
+# Model Configuration
+models:
+  openai:
+    api_key: ${OPENAI_API_KEY}
+    api_base: ${OPENAI_API_BASE:https://vip.apiyi.com/v1}
+    default_model: ${DEFAULT_LLM_MODEL:gpt-4o-mini}
+    temperature: 0.1
+    max_tokens: 4000
+    
+  claude:
+    api_key: ${ANTHROPIC_API_KEY}
+    default_model: claude-3-sonnet-20240229
+    temperature: 0.1
+    max_tokens: 4000
+
+# LangGraph Configuration
+langgraph:
+  recursion_limit: 50
+  max_iterations: 100
+
+# Evaluation Configuration
+evaluation:
+  temperature: 0.1  # Low temperature for consistent evaluation
+  rca_weight: 0.4   # Weight for Root Cause Analysis
+  rcf_weight: 0.6   # Weight for Root Cause Fix recommendations
+
+# Performance Settings
+performance:
+  rate_limit_requests_per_minute: 60
+  cache_ttl_seconds: 3600
+  max_concurrent_requests: 5 

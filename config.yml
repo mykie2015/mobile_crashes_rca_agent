@@ -1,0 +1,70 @@
+# Mobile Crashes RCA Agent - Project Configuration
+
+# =============================================================================
+# Observability Configuration
+# =============================================================================
+observability:
+  # Toggle Langfuse observability on/off
+  langfuse_enabled: false
+  
+  # Other observability settings
+  log_level: "INFO"
+  metrics_enabled: true
+  
+  # Langfuse specific settings (when enabled)
+  langfuse:
+    host: "http://localhost:3000"
+    public_key: "lf-pk-test"
+    secret_key: "lf-sk-test"
+    session_tracking: true
+    auto_flush: true
+
+# =============================================================================
+# LLM Configuration  
+# =============================================================================
+llm:
+  # Default model settings
+  default_model: "gpt-4o-mini"
+  temperature: 0.1
+  max_tokens: 2000
+  
+  # OpenAI settings
+  openai:
+    api_base: "https://api.openai.com/v1"
+    timeout: 30
+
+# =============================================================================
+# Agent Configuration
+# =============================================================================
+agent:
+  # Crash analysis settings
+  max_concurrent_analysis: 5
+  analysis_timeout: 300
+  
+  # Quality thresholds
+  min_confidence_score: 0.6
+  quality_score_threshold: 0.7
+
+# =============================================================================
+# Development Configuration
+# =============================================================================
+development:
+  # Debug settings
+  debug_mode: true
+  verbose_logging: false
+  
+  # Testing
+  mock_llm_calls: false
+  simulate_delays: true
+
+# =============================================================================
+# Production Configuration
+# =============================================================================
+production:
+  # Security
+  api_rate_limiting: true
+  request_validation: true
+  
+  # Performance
+  cache_enabled: true
+  batch_processing: true 

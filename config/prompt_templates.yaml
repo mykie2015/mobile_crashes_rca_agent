@@ -1,0 +1,94 @@
+# Prompt Templates for Mobile Crash Analysis
+
+crash_analysis:
+  system_prompt: |
+    You are an expert mobile application crash analysis agent. Your role is to:
+    1. Analyze crash data patterns and identify root causes
+    2. Generate actionable recommendations for fixing issues
+    3. Provide technical insights for mobile app stability
+    4. Prioritize fixes based on impact and frequency
+
+evaluation:
+  rca_evaluation_prompt: |
+    Evaluate the quality of this ROOT CAUSE ANALYSIS for mobile app crashes:
+    
+    CRASH ANALYSIS DATA:
+    {analysis_data}
+    
+    CRASH REPORT SUMMARY:
+    {report_summary}
+    
+    Please evaluate the RCA on these 4 metrics (0-100 scale):
+    
+    1. **RCA Accuracy**: How accurately did the analysis identify the real root causes?
+    2. **Pattern Detection**: How well did it detect meaningful crash patterns?
+    3. **Root Cause Depth**: How deep and thorough was the root cause investigation?
+    4. **Technical Insight**: Quality of technical insights and understanding?
+    
+    IMPORTANT: Respond ONLY with valid JSON. No markdown, no explanation text, just the JSON object:
+    
+    {{
+        "rca_accuracy_score": 75,
+        "pattern_detection_score": 80, 
+        "root_cause_depth_score": 70,
+        "technical_insight_score": 85,
+        "rca_reasoning": "Brief explanation of RCA quality assessment"
+    }}
+
+  rcf_evaluation_prompt: |
+    Evaluate the quality of these ROOT CAUSE FIX RECOMMENDATIONS:
+    
+    RECOMMENDATIONS:
+    {recommendations}
+    
+    ORIGINAL CRASH ANALYSIS:
+    {analysis_data}
+    
+    Please evaluate the RCF on these 4 metrics (0-100 scale):
+    
+    1. **Coverage**: Do recommendations address all identified crash patterns?
+    2. **Actionability**: Are recommendations specific and implementable?
+    3. **Priority Focus**: Do they prioritize high-impact issues first?
+    4. **Completeness**: Are critical exception types properly addressed?
+    
+    IMPORTANT: Respond ONLY with valid JSON. No markdown, no explanation text, just the JSON object:
+    
+    {{
+        "coverage_score": 85,
+        "actionability_score": 90,
+        "priority_score": 75,
+        "completeness_score": 80,
+        "rcf_reasoning": "Brief explanation of RCF quality assessment"
+    }}
+
+workflow:
+  comprehensive_analysis_prompt: |
+    Please perform a streamlined mobile app crash analysis with the following workflow:
+    
+    1. Use fetch_recent_crashes tool to get crash data (last 7 days)
+    2. Use analyze_crash_patterns tool to identify trends and patterns
+    3. Use generate_crash_report tool to create structured analysis report
+    4. Use visualize_crash_data tool to create meaningful crash distribution charts
+    5. Use recommend_fixes tool to generate actionable recommendations
+    6. Use evaluate_recommendations tool to assess recommendation quality (run ONCE only)
+    7. Use generate_runtime_workflow_diagram tool for execution flow documentation
+    8. Use generate_execution_summary tool for performance metrics
+    9. Use save_markdown_report tool to create the final streamlined report
+    
+    CRITICAL REQUIREMENTS FOR STEP 9:
+    - Call save_markdown_report(report_json, recommendations_json, analysis_json, image_path, evaluation_json)
+    - Include ALL data: report from step 3, recommendations from step 5, analysis from step 2, and evaluation from step 6
+    - The evaluation_json parameter should contain the results from evaluate_recommendations tool
+    - Use actual image path from step 4 if available
+    
+    IMPORTANT: 
+    - Focus on meaningful, actionable content only
+    - Skip mock screenshots and placeholder content
+    - Use only REAL crash data visualization charts
+    - Provide technical insights and specific implementation guidance
+    - Include evaluation metrics in the final report for quality assessment
+
+exception_recommendations:
+  NullPointerException: "Implement null checking in relevant components"
+  OutOfMemoryError: "Optimize memory usage, particularly for image processing and caching"
+  NetworkOnMainThreadException: "Move network operations to background threads" 

@@ -1,0 +1,91 @@
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+.env.staging
+config.env
+
+# API keys and sensitive configuration
+**/api_keys.txt
+**/secrets.json
+**/*_key.txt
+**/*_secret.txt
+
+# Temporary test files
+tmp_test/
+temp_test/
+debug_test/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.cursor/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Generated files and reports
+logs/
+docs/
+*.log
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Daily organized logs (ensure all subdirectories are ignored)
+logs/*/
+logs/**/*.log
+
+# Specific generated files
+crash_analysis.png
+crash_analysis_*.png
+
+# OS generated files
+Thumbs.db
+.DS_Store 

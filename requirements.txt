@@ -1,0 +1,11 @@
+--index-url https://mirrors.aliyun.com/pypi/simple/
+
+
+langchain
+langchain-core
+langchain-openai
+langgraph
+pandas
+matplotlib
+numpy
+python-dotenv 
